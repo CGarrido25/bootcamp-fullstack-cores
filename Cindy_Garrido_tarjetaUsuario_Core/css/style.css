@@ -1,6 +1,7 @@
 body {
   width: 100%;
-  margin: auto;
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
 }
 
@@ -123,6 +124,7 @@ section {
 }
 .container1 {
   display: inline;
+  width: 100%;
 }
 .container2 img {
   width: 30px;
