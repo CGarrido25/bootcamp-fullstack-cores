@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Loteria Mexicana {{x}} {{y}}</h1>
+    {% set secuencia = ["pink", "blue", "yellow"] %} {% set indice =
+    namespace(valor=0) %}
+    <!-- Inicializamos el índice -->
+    {% for i in range(1, x + 1) %} {% set index = namespace(valor=0) %} {% for j
+    in range(1, y + 1) %}
+    <div class="box {{ secuencia[index.valor] }}">
+      {{ muestra[indice.valor] }}
+    </div>
+    {% set index.valor = (index.valor + 1) % 3 %} {% set indice.valor =
+    indice.valor + 1 %} {% endfor %}
+
+    <br />
+    {% set secuencia = secuencia.append(secuencia.pop(0)) %} {% endfor %}
+  </body>
+</html>
