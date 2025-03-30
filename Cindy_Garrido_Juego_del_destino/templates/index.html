@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body class="bg-light container">
+    <div class="container text-center">
+      <h1>Juego del destino</h1>
+    </div>
+    <br />
+    <form action="/formulario" method="POST" class="container text-center">
+     
+      <div class="container text-center">
+        <div class="row">
+         
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                placeholder="jhon doe"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Lugar</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lugar"
+                name="lugar"
+                placeholder="el centro de la ciuidad"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Un numero</label>
+              <input
+                type="text"
+                class="form-control"
+                id="numero"
+                name="numero"
+                placeholder="10"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Comida favorita</label>
+              <input
+                type="text"
+                class="form-control"
+                id="comida"
+                name="comida"
+                placeholder="pastas"
+                required
+              />
+            </div>
+
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Ver mi destino</button>
+    </form>
+
+  
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>

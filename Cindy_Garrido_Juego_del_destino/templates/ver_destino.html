@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body>
+    <h1>destino</h1>
+    <h2>
+      Soy el adivino del Dojo,
+      <span style="color: green">{{nombre}}</span>
+      tendrá un viaje muy largo dentro de
+      <span style="color: blue">{{numero}}</span>
+      años a <span style="color: orange">{{lugar}}</span> y estará el resto de
+      sus días preparando <span style="color: cyan">{{comida}}</span> para todas
+      las personas que quiere.
+    </h2>
+  </body>
+</html>
