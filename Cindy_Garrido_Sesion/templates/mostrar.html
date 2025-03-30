@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar Usuario</title>
+  </head>
+  <body>
+    <h1>Información del Usuario</h1>
+    <p>Nombre: {{ session['nombre_usuario'] }}</p>
+    <p>Email: {{ session['email_usuario'] }}</p>
+    <p>Has visitado esta página {{ contador }} veces.</p>
+    <a href="/index.html">Volver al inicio</a>
+    <button onclick="location.href='/incrementar_visitas_doble'">
+      Incrementar Visitas +2
+    </button>
+    <button onclick="location.href='/reiniciar_visitas'">
+      Reiniciar Visitas
+    </button>
+  </body>
+</html>
