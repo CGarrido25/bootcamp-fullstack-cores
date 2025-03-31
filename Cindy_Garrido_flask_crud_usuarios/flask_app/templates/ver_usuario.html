@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body class="container">
+    <div class="container border border-3 p-3 m-3">
+      <h2>Detalles del Usuario</h2>
+
+      <p>
+        <strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}
+      </p>
+      <p><strong>Email:</strong> {{ usuario.email }}</p>
+      <p><strong>Fecha de creación:</strong> {{ usuario.created_at }}</p>
+      <p><strong>Fecha de actualizacion:</strong> {{ usuario.updated_at }}</p>
+
+      <a href="/usuarios/{{ usuario.id }}/editar" class="btn btn-warning"
+        >Editar</a
+      >
+      <a href="/usuarios" class="btn btn-secondary">Volver</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>

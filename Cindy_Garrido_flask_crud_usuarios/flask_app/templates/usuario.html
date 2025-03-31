@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body class="container">
+    <div
+      class="container d-flex justify-content-between align-items-center my-3"
+    >
+      <h1>Usuarios</h1>
+      <a href="/usuarios/nuevo" class="btn btn-primary">Crear nuevo</a>
+    </div>
+
+    <div>
+      <table class="table table-striped table-hover">
+        <caption>
+          Lista de usuarios
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha de creacion</th>
+            <th scope="col">acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usuario in usuarios %}
+          <tr>
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.created_at}}</td>
+            <td>
+              <a href="/usuarios/{{usuario.id}}/ver" class="btn btn-info"
+                >Ver</a
+              >
+              <a href="/usuarios/{{usuario.id}}/editar" class="btn btn-warning"
+                >Editar</a
+              >
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                data-id="{{usuario.id}}"
+                data-nombre="{{usuario.nombre}} {{usuario.apellido}}"
+                data-email="{{usuario.email}}"
+              >
+                Borrar
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Confirmar Borrado
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p id="modal-usuario-info"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <a id="confirm-delete-btn" href="#" class="btn btn-danger"
+              >Borrar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+      // Selecciona el modal y escucha el evento 'show.bs.modal'
+      const exampleModal = document.getElementById("exampleModal");
+      exampleModal.addEventListener("show.bs.modal", function (event) {
+        // Botón que activó el modal
+        const button = event.relatedTarget;
+        // Extrae la información del usuario del atributo data-*
+        const userId = button.getAttribute("data-id");
+        const userName = button.getAttribute("data-nombre");
+        const userEmail = button.getAttribute("data-email");
+
+        // Actualiza el contenido del modal
+        const modalBody = document.getElementById("modal-usuario-info");
+        modalBody.textContent = `¿Estás seguro de que deseas borrar al usuario ${userName} (${userEmail})?`;
+
+        // Actualiza el enlace de confirmación
+        const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
+        confirmDeleteBtn.href = `/usuarios/${userId}/borrar`;
+      });
+    </script>
+  </body>
+</html>
