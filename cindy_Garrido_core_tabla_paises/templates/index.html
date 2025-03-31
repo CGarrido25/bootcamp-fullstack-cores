@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <title>Paises</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center my-4">Tablas de Paises y sus Capitales</h1>
+
+      <!-- On tables -->
+      <table class="table table-dark table-striped-columns text-center" >
+        <thead>
+          <tr>
+            <th>Pais </th>
+            <th>Capital</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pais in lista_paises %}
+          <tr>
+            <td>{{ pais.pais }}</td>
+            <td>{{ pais.capital }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
