@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body class="container">
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col">
+          <h1 class="text-center">Nuevo Curso</h1>
+          <br />
+          <form action="/estudiante" method="POST">
+            <div class="mb-3">
+              <label for="curso" class="form-label">Curso</label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                required
+                id="curso_id"
+                name="curso_id"
+              >
+                <option selected>Selecciona un curso</option>
+                {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                name="apellido"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="edad" class="form-label">Edad</label>
+              <input
+                type="number"
+                class="form-control"
+                id="edad"
+                name="edad"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Crear Estuante
+            </button>
+          </form>
+          <!-- Cerramos correctamente el formulario -->
+        </div>
+      </div>
+      <br />
+      <a href="/cursos"> Inicio</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
